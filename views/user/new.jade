@@ -7,19 +7,19 @@ block body
       .col-md-7
         form.form-horizontal(method="post", action="/user/create", role="signup")
           .form-group
-            label.col-sm-2.control-label(for="nickname", name="nickname") Nickname
-            .col-sm-10: input.form-control#nickname(type="text", placeholder="Coach Petrov")
+            label.col-sm-2.control-label(for="nickname") Nickname
+            .col-sm-10: input.form-control#nickname(type="text", name="nickname", placeholder="Coach Petrov", required)
           .form-group
             label.col-sm-2.control-label(for="email") Address
             .col-sm-10
-              input.form-control#email(type="email", name="email", placeholder="ivan@petrov.ru")
+              input.form-control#email(type="email", name="email", placeholder="ivan@petrov.ru", required)
               p.help-block We only use your email for administrative purposes. We don't spam.
           .form-group
             label.col-sm-2.control-label(for="password") Password
-            .col-sm-10: input.form-control#password(type="password", placeholder="password", name="password")
+            .col-sm-10: input.form-control#password(type="password", placeholder="password", name="password", required)
           .form-group
             label.col-sm-2.control-label.sr-only(for="passwordpassword") Confirm Password
-            .col-sm-10: input.form-control#passwordpassword(type="password", name="passwordpassword", placeholder="password, again")
+            .col-sm-10: input.form-control#passwordpassword(type="password", name="passwordpassword", placeholder="password, again", required)
           .form-group
             .col-sm-4.col-sm-offset-8
               button.btn.btn-success(type="submit") Register

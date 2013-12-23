@@ -21,10 +21,29 @@ module.exports = {
   },
 
   'create': function(req, res, next) {
-    User.create(req.params.all(), function(err, user) {
+    User.create(req.body, function(err, user) {
+      if(err) {
+        console.dir(err);
+        req.session.flash = {error: []};
+        e = err['ValidationError']
+        for(var k in e) {
+          for(var l in e[k]) {
+            msg = e[k][l]['message'].split(': "" ');
+            req.session.flash.error.push({
+              title: msg[0] + ' ' + k + ':',
+              message: msg[1].replace('(true)', '')
+            });
+          }
+        }
+        console.dir(req.session.flash);
+        res.redirect('/user/new');
+      }
+
+      res.redirect('/user/show/'+user.id);
+    });
+  },
       if(err) return next(err);
 
-      res.json(user);
     });
   },
 
