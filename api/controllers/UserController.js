@@ -42,8 +42,23 @@ module.exports = {
       res.redirect('/user/show/'+user.id);
     });
   },
-      if(err) return next(err);
 
+  'show': function(req, res, next) {
+    User.findOne(req.param('id'), function(err, user) {
+      if(err) return next(err);
+      if(!user) return next();
+      res.view({
+        user: user
+      });
+    });
+  },
+
+  'index': function(req, res, next) {
+    User.find(function(err, users) {
+      if(err) return next(err);
+      res.view({
+        users: users
+      });
     });
   },
 

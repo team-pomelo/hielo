@@ -1,0 +1,27 @@
+extends ../layout
+
+block body
+  .container
+    h1 Coaches
+    .row
+      .col-md-8
+        table.table.table-condensed.table-bordered.table-hover
+          thead
+            tr
+              th #
+              th Coach
+              th Email
+              th Teams
+              th Controls
+          tbody
+            each user in users
+              tr
+                td= user.id
+                td= user.nickname
+                td= user.email
+                td 0
+                td
+                  button.btn.btn-xs.btn-primary(type="button") Edit
+                  |  
+                  button.btn.btn-xs.btn-danger(type="button") Delete
+
