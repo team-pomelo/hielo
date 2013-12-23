@@ -7,6 +7,7 @@
  */
 
 module.exports = {
+  schema: true,
   attributes: {
     nickname: {
       type: 'string',
@@ -21,6 +22,12 @@ module.exports = {
     },
     password: {
       type: 'string',
-    }
+    },
+    toJSON: function() {
+      var u = this.toObject();
+      // Don't respond with password, ever
+      delete u.password;
+      return u;
+    },
   }
 };
