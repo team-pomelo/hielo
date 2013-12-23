@@ -1,0 +1,35 @@
+extends ../layout
+
+block body
+  .container
+    h1 Coach Registration
+    .row
+      .col-md-7
+        form.form-horizontal(method="post", action="/user/create", role="signup")
+          .form-group
+            label.col-sm-2.control-label(for="nickname") Nickname
+            .col-sm-10: input.form-control#nickname(type="text", placeholder="Coach Petrov")
+          .form-group
+            label.col-sm-2.control-label(for="email") Address
+            .col-sm-10
+              input.form-control#email(type="email", placeholder="ivan@petrov.ru")
+              p.help-block We only use your email for administrative purposes. We don't spam.
+          .form-group
+            label.col-sm-2.control-label(for="password") Password
+            .col-sm-10: input.form-control#password(type="password", placeholder="password")
+          .form-group
+            label.sr-only.col-sm-2.control-label(for="passwordpassword") Confirm Password
+            .col-sm-10: input.form-control#passwordpassword(type="password", placeholder="password, again")
+          button.btn.btn-success(type="submit") Register
+          button.btn.btn-danger.pull-right(type="reset") Wimp out
+          input(type="hidden", value=_csrf, name="_csrf")
+      .col-md-5
+        .well
+          p Welcome to the International Communist Expat Hockey league. Welcome to ICE Hockey.
+          p.
+            Before you begin, you must register with the league. Once registered
+            you'll be able to being building your team. In order to register you
+            will need to provide the name you which to go as (don't worry Komrade,
+            we understand and accept aliases), an address we can reach you, and
+            a password to enter the club house.
+          p Once we confirm your address, we'll create your coaches card and you can get started building your team.
