@@ -57,6 +57,7 @@ module.exports = function (grunt) {
     'linker/js/app.js',
 
     // *->    put other dependencies here   <-*
+    'linker/js/jquery-*.js',
 
     // All of the rest of your app scripts imported here
     'linker/**/*.js'
@@ -133,6 +134,7 @@ module.exports = function (grunt) {
   grunt.loadTasks(depsPath + '/grunt-contrib-cssmin/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-less/tasks');
   grunt.loadTasks(depsPath + '/grunt-contrib-coffee/tasks');
+  grunt.loadNpmTasks('/grunt-contrib-stylus');
 
   // Project configuration.
   grunt.initConfig({
@@ -195,6 +197,26 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'assets/linker/styles/',
           src: ['*.less'],
+          dest: '.tmp/public/linker/styles/',
+          ext: '.css'
+        }
+        ]
+      }
+    },
+
+    stylus: {
+      dev: {
+        files: [
+          {
+          expand: true,
+          cwd: 'assets/styles/',
+          src: ['*.styl'],
+          dest: '.tmp/public/styles/',
+          ext: '.css'
+        }, {
+          expand: true,
+          cwd: 'assets/linker/styles/',
+          src: ['*.styl'],
           dest: '.tmp/public/linker/styles/',
           ext: '.css'
         }
@@ -423,6 +445,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    'stylus:dev',
     'copy:dev',    
     'coffee:dev'
   ]);
@@ -453,6 +476,7 @@ module.exports = function (grunt) {
     'clean:dev',
     'jst:dev',
     'less:dev',
+    'stylus:dev',
     'copy:dev',
     'coffee:dev',
     'concat',
