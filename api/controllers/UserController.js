@@ -20,6 +20,14 @@ module.exports = {
     res.view();
   },
 
+  'create': function(req, res, next) {
+    User.create(req.params.all(), function(err, user) {
+      if(err) return next(err);
+
+      res.json(user);
+    });
+  },
+
   /**
    * Overrides for the settings in `config/controllers.js`
    * (specific to UserController)
